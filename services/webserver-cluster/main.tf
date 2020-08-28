@@ -23,8 +23,7 @@ resource "aws_launch_configuration" "testInstance" {
 	      wget https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64
         mv busybox-x86_64 busybox
         chmod +x busybox
-	      instance_id="${data.terraform_remote_state.instance.outputs.ip}"
-	      echo "Hello, World. This instance is $instance_id" >> index.html
+	      echo "Hello, World. This instance is alive!" >> index.html
 	      nohup ./busybox httpd -f -p "${var.server_port}" &
 	      EOF
 
