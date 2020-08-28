@@ -21,11 +21,10 @@ resource "aws_launch_configuration" "testInstance" {
   user_data = <<-EOF
 	      #!/bin/bash
 	      wget https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64
-              mv busybox-x86_64 busybox
-              chmod +x busybox
-	      db_address="${data.terraform_remote_state.db.outputs.address}"
-	      db_port="${data.terraform_remote_state.db.outputs.port}"
-	      echo "Hello, World. DB is at $db_address:$db_port" >> index.html
+        mv busybox-x86_64 busybox
+        chmod +x busybox
+	      instance_id="${data.terraform_remote_state.instance.outputs.ip}"
+	      echo "Hello, World. This instance is $instance_id" >> index.html
 	      nohup ./busybox httpd -f -p "${var.server_port}" &
 	      EOF
 
