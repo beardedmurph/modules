@@ -1,15 +1,3 @@
-variable "server_port" {
-  description = "The port the server will use for HTTP requests"
-  type        = number
-  default     = 8080
-}
-
-variable "ssh_port" {
-  description = "The port the server will use for SSH requests"
-  type        = number
-  default     = 22
-}
-
 data "aws_availability_zones" "all" {}
 
 resource "aws_launch_configuration" "testInstance" {

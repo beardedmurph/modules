@@ -26,3 +26,15 @@ variable "enable_autoscaling" {
   description = "If set to true, enable auto scaling"
   type        = bool
 }
+
+variable "server_port" {
+  description = "The port the server will use for HTTP requests"
+  type        = number
+  default     = 8080
+}
+
+variable "ssh_port" {
+  description = "The port the server will use for SSH requests"
+  type        = number
+  default     = 22
+}
